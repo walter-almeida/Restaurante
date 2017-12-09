@@ -33,6 +33,11 @@ public class Produto {
 		this.codigo = codigo;
 	}
 	
+	@Override
+	public String toString() {
+		return "Produto [id=" + id + ", categoria=" + categoria + ", preco=" + preco + ", codigo=" + codigo + "]";
+	}
+	
 	
 
 }

@@ -46,9 +46,9 @@ public class FuncionarioDAO extends GenericoDAO<Funcionario>{
 	}
 
 	private void preencheCampos(PreparedStatement comando, Funcionario entidade) throws SQLException {
-		comando.setString(0, entidade.getNome());
-		comando.setString(1,entidade.getEndereco());
-		comando.setInt(2,entidade.getTelefone());		
+		comando.setString(1, entidade.getNome());
+		comando.setString(2,entidade.getEndereco());
+		comando.setInt(3,entidade.getTelefone());		
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class FuncionarioDAO extends GenericoDAO<Funcionario>{
 			comando = conn.prepareStatement(sql);
 			
 			preencheCampos(comando, entidade);
-			comando.setInt(3, entidade.getIdFuncionario());
+			comando.setInt(4, entidade.getIdFuncionario());
 			comando.execute();
 			
 		} catch (SQLException e) {
@@ -82,7 +82,7 @@ public class FuncionarioDAO extends GenericoDAO<Funcionario>{
 		
 		try {
 			comando = conn.prepareStatement(sql);
-			comando.setInt(0, entidade.getIdFuncionario());
+			comando.setInt(1, entidade.getIdFuncionario());
 			comando.execute();
 		} catch (SQLException e) {
 			throw new DAOException("Erro ao deletar o funcionario", e);
@@ -100,7 +100,7 @@ public class FuncionarioDAO extends GenericoDAO<Funcionario>{
 		try {
 			comando = conn.prepareStatement(sql);
 			
-			comando.setInt(0, id);
+			comando.setInt(1, id);
 			
 			rs = comando.executeQuery();
 			

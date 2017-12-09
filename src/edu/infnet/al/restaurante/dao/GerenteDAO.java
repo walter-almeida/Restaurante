@@ -38,7 +38,7 @@ public class GerenteDAO extends FuncionarioDAO{
 
 	private void preencheCampos(PreparedStatement comando, Funcionario entidade) throws SQLException, DAOException {
 		if(entidade instanceof Gerente) {
-			comando.setInt(0, ((Gerente)entidade).getCpf());
+			comando.setInt(1, ((Gerente)entidade).getCpf());
 			
 		} else {
 			throw new DAOException("Erro ao tentar inserir/alterar outro tipo de funcionario em Gerente",null);
@@ -56,7 +56,7 @@ public class GerenteDAO extends FuncionarioDAO{
 			comando = conn.prepareStatement(sql);
 			
 			preencheCampos(comando, entidade);
-			comando.setInt(1, ((Gerente)entidade).getIdGerente());
+			comando.setInt(2, ((Gerente)entidade).getIdGerente());
 			comando.execute();
 			
 		} catch (SQLException e) {
@@ -79,7 +79,7 @@ public class GerenteDAO extends FuncionarioDAO{
 		
 		try {
 			comando = conn.prepareStatement(sql);
-			comando.setInt(0, ((Gerente)entidade).getIdGerente());
+			comando.setInt(1, ((Gerente)entidade).getIdGerente());
 			comando.execute();
 		} catch (SQLException e) {
 			throw new DAOException("Erro ao deletar o gerente", e);
@@ -97,7 +97,7 @@ public class GerenteDAO extends FuncionarioDAO{
 		try {
 			comando = conn.prepareStatement(sql);
 			
-			comando.setInt(0, id);
+			comando.setInt(1, id);
 			
 			rs = comando.executeQuery();
 			

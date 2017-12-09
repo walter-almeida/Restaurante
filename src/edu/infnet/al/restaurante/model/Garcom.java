@@ -25,6 +25,11 @@ public class Garcom extends Funcionario{
 		this.idGarcom = idGarcom;
 	}
 	
+	@Override
+	public String toString() {
+		return "Garcom [idGarcom=" + idGarcom + ", identidade=" + identidade + ", matricula=" + matricula + "]";
+	}
+	
 	
 	
 }

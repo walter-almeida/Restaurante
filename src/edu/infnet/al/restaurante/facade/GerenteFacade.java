@@ -1,23 +1,35 @@
 package edu.infnet.al.restaurante.facade;
 
-public class GerenteFacade {
-	
+import java.util.List;
 
-	
-	public void incluir(){
+import edu.infnet.al.restaurante.dao.GerenteDAO;
+import edu.infnet.al.restaurante.exception.DAOException;
+import edu.infnet.al.restaurante.model.Funcionario;
+import edu.infnet.al.restaurante.model.Gerente;
+
+public class GerenteFacade {
+	public void incluir(Gerente Gerente)throws DAOException{
+		GerenteDAO dao = new GerenteDAO();
+		dao.incluir((Funcionario)Gerente);
 		
 	}
 	
-	public void alterar(){
-			
-		}
+	public void alterar(Gerente Gerente)throws DAOException{
+		GerenteDAO dao = new GerenteDAO();
+		dao.alterar((Funcionario)Gerente);
+
+	}
 	
 	
-	public void excluir(){
+	public void excluir(Gerente Gerente)throws DAOException{
+		GerenteDAO dao = new GerenteDAO();
+		dao.excluir((Funcionario)Gerente);
 		
 	}
 	
-	public void consultar(){
+	public List<Gerente> consultar()throws DAOException{
+		GerenteDAO dao = new GerenteDAO();
+		return dao.listarGerentes();
 		
 	}
 }

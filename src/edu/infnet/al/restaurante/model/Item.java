@@ -6,6 +6,7 @@ public class Item {
 	private int quantidade;
 	private int idConta;
 	private Produto produto;
+	private double preco;
 
 	public int getQuantidade() {
 		return quantidade;
@@ -38,6 +39,15 @@ public class Item {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+	
 	
 	
 	

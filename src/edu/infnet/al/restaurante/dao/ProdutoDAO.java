@@ -44,9 +44,9 @@ public class ProdutoDAO extends GenericoDAO<Produto>{
 	}
 
 	private void preencheCampos(PreparedStatement comando, Produto entidade) throws SQLException {
-		comando.setString(0, entidade.getCategoria());
-		comando.setDouble(1, entidade.getPreco());		
-		comando.setInt(0, entidade.getCodigo());
+		comando.setString(1, entidade.getCategoria());
+		comando.setDouble(2, entidade.getPreco());		
+		comando.setInt(3, entidade.getCodigo());
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class ProdutoDAO extends GenericoDAO<Produto>{
 		
 		try {
 			comando = conn.prepareStatement(sql);
-			comando.setInt(0, entidade.getId());
+			comando.setInt(1, entidade.getId());
 			comando.execute();
 		} catch (SQLException e) {
 			throw new DAOException("Erro ao deletar o produto", e);
@@ -97,7 +97,7 @@ public class ProdutoDAO extends GenericoDAO<Produto>{
 		try {
 			comando = conn.prepareStatement(sql);
 			
-			comando.setInt(0, id);
+			comando.setInt(1, id);
 			
 			rs = comando.executeQuery();
 			
@@ -152,7 +152,7 @@ public class ProdutoDAO extends GenericoDAO<Produto>{
 		ResultSet rs = null;
 		try {
 			comando = conn.prepareStatement(sql);
-			comando.setInt(0, idItem);
+			comando.setInt(1, idItem);
 			rs = comando.executeQuery();
 			
 			

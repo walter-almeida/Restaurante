@@ -19,15 +19,21 @@ public class ItemDAO extends GenericoDAO<Item>{
 		conn = Conector.getConnection();
 	}
 	
-	
-	@Override
+		
 	public void incluir(Item entidade) throws DAOException {
-		String sql = "INSERT INTO item (quantidade, idConta, idProduto) VALUES (?,?,?)";
+		String sql = "INSERT INTO item (quantidade, idConta, preco, idProduto) VALUES (?,?,?,?)";
 		PreparedStatement comando = null;
+		
 		try {
 			comando = conn.prepareStatement(sql);
 			preencheCampos(comando, entidade);
-			comando.setInt(2, entidade.getProduto().getId());
+			comando.setInt(3, entidade.getProduto().getId());
+			
+			if (comando.executeUpdate() > 0){
+	            ResultSet rs = comando.getGeneratedKeys();
+	            rs.next(); 
+	            entidade.setId(rs.getInt(1));
+			}
 		} catch (SQLException e) {
 				throw new DAOException("Erro ao criar um novo item",e);
 		}finally {
@@ -40,18 +46,19 @@ public class ItemDAO extends GenericoDAO<Item>{
 			}
 		
 		}
+		
 	}
 
 	@Override
 	public void alterar(Item entidade) throws DAOException {
-		String sql = "UPDATE item SET quantidade=?, idconta=? WHERE id=?";
+		String sql = "UPDATE item SET quantidade=?, idconta=?, preco=? WHERE id=?";
 		PreparedStatement comando = null;
 		
 		try {
 			comando = conn.prepareStatement(sql);
 			
 			preencheCampos(comando, entidade);
-			comando.setInt(2, entidade.getId());
+			comando.setInt(4, entidade.getId());
 			comando.execute();
 			
 		} catch (SQLException e) {
@@ -73,7 +80,7 @@ public class ItemDAO extends GenericoDAO<Item>{
 		
 		try {
 			comando = conn.prepareStatement(sql);
-			comando.setInt(0, entidade.getId());
+			comando.setInt(1, entidade.getId());
 			comando.execute();
 		} catch (SQLException e) {
 			throw new DAOException("Erro ao deletar o item", e);
@@ -92,7 +99,7 @@ public class ItemDAO extends GenericoDAO<Item>{
 		try {
 			comando = conn.prepareStatement(sql);
 			
-			comando.setInt(0, id);
+			comando.setInt(1, id);
 			
 			rs = comando.executeQuery();
 			
@@ -113,6 +120,7 @@ public class ItemDAO extends GenericoDAO<Item>{
 		item.setId(rs.getInt("id"));
 		item.setQuantidade(rs.getInt("quantidade"));
 		item.setIdConta(rs.getInt("idconta"));
+		item.setPreco(rs.getDouble("preco"));
 		item.setProduto(new ProdutoDAO().obterDoItem(item.getId()));
 
 		return item;
@@ -149,7 +157,7 @@ public class ItemDAO extends GenericoDAO<Item>{
 		ResultSet rs = null;
 		try {
 			comando = conn.prepareStatement(sql);
-			comando.setInt(0, idConta);
+			comando.setInt(1, idConta);
 			rs = comando.executeQuery();
 			
 			while(rs.next()) {
@@ -164,8 +172,9 @@ public class ItemDAO extends GenericoDAO<Item>{
 	}
 	
 	private void preencheCampos(PreparedStatement comando, Item entidade) throws SQLException{
-		comando.setInt(0, entidade.getQuantidade());
-		comando.setInt(1, entidade.getIdConta());		
+		comando.setInt(1, entidade.getQuantidade());
+		comando.setInt(2, entidade.getIdConta());	
+		comando.setDouble(3, entidade.getPreco());	
 	}
 
 }

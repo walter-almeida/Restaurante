@@ -55,7 +55,7 @@ private Connection conn;
 			comando = conn.prepareStatement(sql);
 			
 			preencheCampos(comando, entidade);
-			comando.setInt(3, entidade.getId());
+			comando.setInt(4, entidade.getId());
 			comando.execute();
 			
 		} catch (SQLException e) {
@@ -77,7 +77,7 @@ private Connection conn;
 		
 		try {
 			comando = conn.prepareStatement(sql);
-			comando.setInt(0, entidade.getId());
+			comando.setInt(1, entidade.getId());
 			comando.execute();
 		} catch (SQLException e) {
 			throw new DAOException("Erro ao deletar a percentualcomissao", e);
@@ -95,7 +95,7 @@ private Connection conn;
 		try {
 			comando = conn.prepareStatement(sql);
 			
-			comando.setInt(0, id);
+			comando.setInt(1, id);
 			
 			rs = comando.executeQuery();
 			
@@ -135,9 +135,9 @@ private Connection conn;
 	}
 	
 	private void preencheCampos(PreparedStatement comando, PercentualComissao entidade) throws SQLException{
-		comando.setDouble(0, entidade.getValor());
-		comando.setDate(1, new Date(entidade.getDataHora().getTime()));
-		comando.setInt(2, entidade.getIdGarcom());
+		comando.setDouble(1, entidade.getValor());
+		comando.setDate(2, new Date(entidade.getDataHora().getTime()));
+		comando.setInt(3, entidade.getIdGarcom());
 	}
 	
 	public PercentualComissao obterPercentualComissao(ResultSet rs) throws SQLException, DAOException {

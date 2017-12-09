@@ -39,8 +39,8 @@ public class GarcomDAO extends FuncionarioDAO{
 
 	private void preencheCampos(PreparedStatement comando, Funcionario entidade) throws SQLException, DAOException {
 		if(entidade instanceof Garcom) {
-			comando.setInt(0, ((Garcom)entidade).getIdentidade());
-			comando.setInt(1, ((Garcom)entidade).getMatricula());
+			comando.setInt(1, ((Garcom)entidade).getIdentidade());
+			comando.setInt(2, ((Garcom)entidade).getMatricula());
 		} else {
 			throw new DAOException("Erro ao tentar inserir/alterar outro tipo de funcionário em Garçom",null);
 		}
@@ -57,7 +57,7 @@ public class GarcomDAO extends FuncionarioDAO{
 			comando = conn.prepareStatement(sql);
 			
 			preencheCampos(comando, entidade);
-			comando.setInt(2, ((Garcom)entidade).getIdGarcom());
+			comando.setInt(3, ((Garcom)entidade).getIdGarcom());
 			comando.execute();
 			
 		} catch (SQLException e) {
@@ -80,7 +80,7 @@ public class GarcomDAO extends FuncionarioDAO{
 		
 		try {
 			comando = conn.prepareStatement(sql);
-			comando.setInt(0, ((Garcom)entidade).getIdGarcom());
+			comando.setInt(1, ((Garcom)entidade).getIdGarcom());
 			comando.execute();
 		} catch (SQLException e) {
 			throw new DAOException("Erro ao deletar o garcom", e);
@@ -88,8 +88,8 @@ public class GarcomDAO extends FuncionarioDAO{
 		
 	}
 
-	@Override
-	public Funcionario obter(int id) throws DAOException {
+	
+	public Garcom obterGarcom(int id) throws DAOException {
 		String sql = "SELECT * FROM garcom WHERE idgarcom= ?";
 		
 		Funcionario funcionario = new Garcom();
@@ -98,7 +98,7 @@ public class GarcomDAO extends FuncionarioDAO{
 		try {
 			comando = conn.prepareStatement(sql);
 			
-			comando.setInt(0, id);
+			comando.setInt(1, id);
 			
 			rs = comando.executeQuery();
 			
@@ -111,7 +111,7 @@ public class GarcomDAO extends FuncionarioDAO{
 		} catch (SQLException e) {
 			throw new DAOException("Erro ao buscar um funcionario", e);
 		}
-		return funcionario;
+		return (Garcom)funcionario;
 	}
 
 	private Funcionario obterFuncionario(ResultSet rs) throws SQLException, DAOException {
