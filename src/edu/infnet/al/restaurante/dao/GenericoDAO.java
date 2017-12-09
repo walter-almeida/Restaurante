@@ -1,8 +1,8 @@
-package edu.infnet.al.tarefa.dao;
+package edu.infnet.al.restaurante.dao;
 
 import java.util.List;
 
-import edu.infnet.al.tarefa.exception.DAOException;
+import edu.infnet.al.restaurante.exception.DAOException;
 
 public abstract class GenericoDAO<T> {
 	public abstract void incluir(T entidade)  throws DAOException;

@@ -1,4 +1,4 @@
-package edu.infnet.al.tarefa.dao;
+package edu.infnet.al.restaurante.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,10 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.infnet.al.tarefa.conector.Conector;
-import edu.infnet.al.tarefa.exception.DAOException;
-import edu.infnet.al.tarefa.model.Item;
-import edu.infnet.al.tarefa.model.Produto;
+import edu.infnet.al.restaurante.conector.Conector;
+import edu.infnet.al.restaurante.exception.DAOException;
+import edu.infnet.al.restaurante.model.Item;
+import edu.infnet.al.restaurante.model.Produto;
 
 public class ProdutoDAO extends GenericoDAO<Produto>{
 

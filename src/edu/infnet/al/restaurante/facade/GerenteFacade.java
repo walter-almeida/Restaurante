@@ -1,4 +1,4 @@
-package edu.infnet.al.tarefa.facade;
+package edu.infnet.al.restaurante.facade;
 
 public class GerenteFacade {
 	

@@ -1,4 +1,4 @@
-package edu.infnet.al.tarefa.dao;
+package edu.infnet.al.restaurante.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,9 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.infnet.al.tarefa.conector.Conector;
-import edu.infnet.al.tarefa.exception.DAOException;
-import edu.infnet.al.tarefa.model.PercentualComissao;
+import edu.infnet.al.restaurante.conector.Conector;
+import edu.infnet.al.restaurante.exception.DAOException;
+import edu.infnet.al.restaurante.model.PercentualComissao;
 
 public class PercentualComissaoDAO extends GenericoDAO<PercentualComissao>{
 

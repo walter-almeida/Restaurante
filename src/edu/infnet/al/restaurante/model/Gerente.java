@@ -1,4 +1,4 @@
-package edu.infnet.al.tarefa.model;
+package edu.infnet.al.restaurante.model;
 
 public class Gerente extends Funcionario{
 	

@@ -1,4 +1,4 @@
-package edu.infnet.al.tarefa.exception;
+package edu.infnet.al.restaurante.exception;
 
 public class DAOException extends Exception {
 

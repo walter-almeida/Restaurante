@@ -1,4 +1,4 @@
-package edu.infnet.al.tarefa.dao;
+package edu.infnet.al.restaurante.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.infnet.al.tarefa.exception.DAOException;
-import edu.infnet.al.tarefa.model.Funcionario;
-import edu.infnet.al.tarefa.model.Gerente;
+import edu.infnet.al.restaurante.exception.DAOException;
+import edu.infnet.al.restaurante.model.Funcionario;
+import edu.infnet.al.restaurante.model.Gerente;
 
 public class GerenteDAO extends FuncionarioDAO{
 	@Override
