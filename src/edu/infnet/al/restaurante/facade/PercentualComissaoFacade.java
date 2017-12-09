@@ -2,9 +2,15 @@ package edu.infnet.al.restaurante.facade;
 
 public class PercentualComissaoFacade {
 
-	public void manterPercentualComissao(){
-		//incluir
-		//consultar
+		
+	public void incluir(){
+		
+	}
+	
+	
+	
+	public void consultar(){
+		
 	}
 	
 }
