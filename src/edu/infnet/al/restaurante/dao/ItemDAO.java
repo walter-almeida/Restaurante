@@ -163,7 +163,7 @@ public class ItemDAO extends GenericoDAO<Item>{
 		return itens;
 	}
 	
-	public void preencheCampos(PreparedStatement comando, Item entidade) throws SQLException{
+	private void preencheCampos(PreparedStatement comando, Item entidade) throws SQLException{
 		comando.setInt(0, entidade.getQuantidade());
 		comando.setInt(1, entidade.getIdConta());		
 	}

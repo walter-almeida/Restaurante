@@ -134,7 +134,7 @@ private Connection conn;
 		return percentualcomissaos;
 	}
 	
-	public void preencheCampos(PreparedStatement comando, PercentualComissao entidade) throws SQLException{
+	private void preencheCampos(PreparedStatement comando, PercentualComissao entidade) throws SQLException{
 		comando.setDouble(0, entidade.getValor());
 		comando.setDate(1, new Date(entidade.getDataHora().getTime()));
 		comando.setInt(2, entidade.getIdGarcom());
