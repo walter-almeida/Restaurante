@@ -37,6 +37,12 @@ public class PercentualComissao {
 		this.idGarcom = idGarcom;
 	}
 	
+	@Override
+	public String toString() {
+		return "PercentualComissao [valor=" + valor + ", dataHora=" + dataHora + ", id=" + id + ", idGarcom=" + idGarcom
+				+ "]";
+	}
+	
 	
 	
 	

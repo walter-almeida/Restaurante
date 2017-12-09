@@ -58,10 +58,11 @@ public class ProdutoDAO extends GenericoDAO<Produto>{
 			comando = conn.prepareStatement(sql);
 			
 			preencheCampos(comando, entidade);
+			comando.setInt(4, entidade.getId());
 			comando.execute();
 			
 		} catch (SQLException e) {
-				throw new DAOException("Erro ao criar um novo produto",e);
+				throw new DAOException("Erro ao alterar o produto",e);
 		}finally {
 			try {
 				comando.close();

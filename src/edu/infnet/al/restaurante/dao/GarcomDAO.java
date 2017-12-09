@@ -12,10 +12,14 @@ import edu.infnet.al.restaurante.model.Garcom;
 
 public class GarcomDAO extends FuncionarioDAO{
 	
+	public GarcomDAO() throws DAOException {
+		super();
+	}
+	
 	@Override
 	public void incluir(Funcionario entidade) throws DAOException {
 		super.incluir(entidade);
-		String sql = "INSERT INTO garcom(identidade, matricula) VALUES (?,?)";
+		String sql = "INSERT INTO garcom(identidade, matricula, idfuncionario) VALUES (?,?,?)";
 		PreparedStatement comando = null;
 		
 		try {
@@ -41,6 +45,7 @@ public class GarcomDAO extends FuncionarioDAO{
 		if(entidade instanceof Garcom) {
 			comando.setInt(1, ((Garcom)entidade).getIdentidade());
 			comando.setInt(2, ((Garcom)entidade).getMatricula());
+			comando.setInt(3, ((Garcom)entidade).getIdFuncionario());
 		} else {
 			throw new DAOException("Erro ao tentar inserir/alterar outro tipo de funcionário em Garçom",null);
 		}

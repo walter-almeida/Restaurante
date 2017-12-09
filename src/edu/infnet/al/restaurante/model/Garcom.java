@@ -1,9 +1,13 @@
 package edu.infnet.al.restaurante.model;
 
+
+
 public class Garcom extends Funcionario{
 	private int idGarcom;
 	private int identidade;
 	private int matricula;
+	
+	private double comissao;
 	
 	
 	public int getIdentidade() {
@@ -29,6 +33,13 @@ public class Garcom extends Funcionario{
 	public String toString() {
 		return "Garcom [idGarcom=" + idGarcom + ", identidade=" + identidade + ", matricula=" + matricula + "]";
 	}
+	public double getComissao() {
+		return comissao;
+	}
+	public void setComissao(double comissao) {
+		this.comissao = comissao;
+	}
+	
 	
 	
 	

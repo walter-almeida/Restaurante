@@ -8,12 +8,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.infnet.al.restaurante.conector.Conector;
 import edu.infnet.al.restaurante.exception.DAOException;
 import edu.infnet.al.restaurante.model.Funcionario;
 
 
 public class FuncionarioDAO extends GenericoDAO<Funcionario>{
 	protected Connection conn;
+	
+	public FuncionarioDAO() throws DAOException {
+		conn = Conector.getConnection();
+	}
+	
 	
 	@Override
 	public void incluir(Funcionario entidade) throws DAOException {

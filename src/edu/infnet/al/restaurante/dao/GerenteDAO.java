@@ -11,6 +11,13 @@ import edu.infnet.al.restaurante.model.Funcionario;
 import edu.infnet.al.restaurante.model.Gerente;
 
 public class GerenteDAO extends FuncionarioDAO{
+	
+	
+	public GerenteDAO() throws DAOException {
+		super();
+		
+	}
+
 	@Override
 	public void incluir(Funcionario entidade) throws DAOException {
 		super.incluir(entidade);
